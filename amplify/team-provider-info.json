@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-rewards-dev-121258-authRole",
+            "UnauthRoleArn": "arn:aws:iam::803550409432:role/amplify-rewards-dev-121258-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::803550409432:role/amplify-rewards-dev-121258-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-rewards-dev-121258-deployment",
+            "UnauthRoleName": "amplify-rewards-dev-121258-unauthRole",
+            "StackName": "amplify-rewards-dev-121258",
+            "StackId": "arn:aws:cloudformation:us-east-1:803550409432:stack/amplify-rewards-dev-121258/46b3c0e0-c13e-11ea-b134-0a531bfc577e",
+            "AmplifyAppId": "d29qi2xr4ems75"
+        }
+    }
+}
