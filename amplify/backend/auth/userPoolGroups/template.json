@@ -1,0 +1,68 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {
+        "authrewardsUserPoolId": {
+            "Type": "String",
+            "Default": "authrewardsUserPoolId"
+        },
+        
+        "authrewardsAppClientID": {
+            "Type": "String",
+            "Default": "authrewardsAppClientID"
+        },
+        "authrewardsAppClientIDWeb": {
+            "Type": "String",
+            "Default": "authrewardsAppClientIDWeb"
+        },
+        "AuthRoleArn": {
+            "Type": "String"
+        },
+        "UnauthRoleArn": {
+            "Type": "String"
+        },
+        "env": {
+            "Type": "String"
+        }
+    },
+    "Conditions": {
+        "ShouldNotCreateEnvResources": {
+            "Fn::Equals": [
+                {
+                    "Ref": "env"
+                },
+                "NONE"
+            ]
+        }
+    },
+    "Resources": {
+    
+        "votersGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "voters",
+              "Precedence" : 1,
+              
+              "UserPoolId" : {
+                "Ref": "authrewardsUserPoolId"
+              } 
+            }
+        },
+        
+    
+        "hrGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "hr",
+              "Precedence" : 2,
+              
+              "UserPoolId" : {
+                "Ref": "authrewardsUserPoolId"
+              } 
+            }
+        },
+        
+    
+    
+    },
+    
+}

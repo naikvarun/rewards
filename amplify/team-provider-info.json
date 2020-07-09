@@ -10,6 +10,11 @@
             "StackName": "amplify-rewards-dev-130404",
             "StackId": "arn:aws:cloudformation:us-east-2:711802065434:stack/amplify-rewards-dev-130404/697b3d90-c145-11ea-ad8d-0608930970a0",
             "AmplifyAppId": "d21o6ck9j0ytfs"
+        },
+        "categories": {
+            "auth": {
+                "rewards": {}
+            }
         }
     }
 }
