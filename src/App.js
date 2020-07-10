@@ -6,6 +6,8 @@ import { UserContext } from "./context/UserContext";
 import {AuthState} from "@aws-amplify/ui-components";
 import AuthPage from "./components/auth/AuthPage";
 import HomePage from "./components/HomePage";
+import AwardContextProvider from "./context/AwardsContextProvider";
+import Header from "./components/Header";
 
 Amplify.configure(awsConfig);
 function App() {
@@ -13,7 +15,10 @@ function App() {
   const { authState, user } = useContext(UserContext);
 
   return authState === AuthState.SignedIn && user ? (
-      <HomePage />
+   <AwardContextProvider >
+       <Header />
+     <HomePage />
+   </AwardContextProvider>
   ) : (
       <AuthPage />
   )

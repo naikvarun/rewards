@@ -1,9 +1,10 @@
 import React from 'react';
+import AwardsInfo from "./awards/AwardsInfo";
 
 const HomePage = () => {
     return (
         <div>
-            <h1>You are on homepage</h1>
+            <AwardsInfo />
         </div>
     )
 }

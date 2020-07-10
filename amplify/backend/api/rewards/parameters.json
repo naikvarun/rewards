@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "rewards",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authrewards",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
