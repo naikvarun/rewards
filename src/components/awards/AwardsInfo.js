@@ -1,19 +1,27 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {AwardContext} from "../../context/AwardsContextProvider";
-
+import AwardInformation from "./AwardInformation";
+import {Carousel } from 'react-bootstrap'
 const AwardsInfo = () => {
     const {awards} = useContext(AwardContext);
-    console.log(awards);
-    return awards && awards.length ? (
-        <div className="container">
-            <ul>
-                {awards.map(award => {
+    const [index, setIndex] = useState(0);
 
-                    return (
-                        <li key={award.id}>{award.title}</li>
-                    )
-                })}
-            </ul>
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    };
+    return awards && awards.length ? (
+        <div className="container-fluid">
+        <Carousel activeIndex={index} onSelect={handleSelect}>
+            {
+                awards.map(award => {
+                   return (
+                       <Carousel.Item key={award.id}>
+                           <AwardInformation award={award} />
+                       </Carousel.Item>
+                   )
+                })
+            }
+        </Carousel>
         </div>
     ) : (
         <h1>No Awards Found</h1>

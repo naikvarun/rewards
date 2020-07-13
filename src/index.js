@@ -8,11 +8,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <UserContextProvider>
-            <App/>
-        </UserContextProvider>
-    </React.StrictMode>,
+    <UserContextProvider>
+        <App/>
+    </UserContextProvider>,
     document.getElementById('root')
 );
 
