@@ -8,3 +8,8 @@
 .bg-white {
   background: #ffffff;
 }
+.btn-bw {
+  color: #ffffff;
+  background-color: #da291c;
+  border-bottom-color: #da291c;
+}
