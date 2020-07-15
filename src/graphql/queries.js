@@ -34,3 +34,47 @@ export const listAwards = /* GraphQL */ `
     }
   }
 `;
+export const getNomination = /* GraphQL */ `
+  query GetNomination($id: ID!) {
+    getNomination(id: $id) {
+      id
+      award {
+        id
+        title
+        description
+        categories
+        nominatedBy
+        createdAt
+        updatedAt
+      }
+      categories
+      nominee
+      nominatedBy
+      nominationFor
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listNominations = /* GraphQL */ `
+  query ListNominations(
+    $filter: ModelNominationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listNominations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        categories
+        nominee
+        nominatedBy
+        nominationFor
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

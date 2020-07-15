@@ -1,6 +1,7 @@
 import React from 'react';
 import AwardsInfo from "./awards/AwardsInfo";
 import NominationForm from "./Nomination";
+import NominationList from "./NominationsList";
 
 const HomePage = () => {
     return (
@@ -10,6 +11,9 @@ const HomePage = () => {
             </div>
             <div className="mt-2">
                 <NominationForm />
+            </div>
+            <div className="mt-3">
+                <NominationList />
             </div>
         </div>
     )

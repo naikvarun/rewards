@@ -49,3 +49,81 @@ export const deleteAward = /* GraphQL */ `
     }
   }
 `;
+export const createNomination = /* GraphQL */ `
+  mutation CreateNomination(
+    $input: CreateNominationInput!
+    $condition: ModelNominationConditionInput
+  ) {
+    createNomination(input: $input, condition: $condition) {
+      id
+      award {
+        id
+        title
+        description
+        categories
+        nominatedBy
+        createdAt
+        updatedAt
+      }
+      categories
+      nominee
+      nominatedBy
+      nominationFor
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateNomination = /* GraphQL */ `
+  mutation UpdateNomination(
+    $input: UpdateNominationInput!
+    $condition: ModelNominationConditionInput
+  ) {
+    updateNomination(input: $input, condition: $condition) {
+      id
+      award {
+        id
+        title
+        description
+        categories
+        nominatedBy
+        createdAt
+        updatedAt
+      }
+      categories
+      nominee
+      nominatedBy
+      nominationFor
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteNomination = /* GraphQL */ `
+  mutation DeleteNomination(
+    $input: DeleteNominationInput!
+    $condition: ModelNominationConditionInput
+  ) {
+    deleteNomination(input: $input, condition: $condition) {
+      id
+      award {
+        id
+        title
+        description
+        categories
+        nominatedBy
+        createdAt
+        updatedAt
+      }
+      categories
+      nominee
+      nominatedBy
+      nominationFor
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;

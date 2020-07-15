@@ -40,3 +40,72 @@ export const onDeleteAward = /* GraphQL */ `
     }
   }
 `;
+export const onCreateNomination = /* GraphQL */ `
+  subscription OnCreateNomination($owner: String) {
+    onCreateNomination(owner: $owner) {
+      id
+      award {
+        id
+        title
+        description
+        categories
+        nominatedBy
+        createdAt
+        updatedAt
+      }
+      categories
+      nominee
+      nominatedBy
+      nominationFor
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateNomination = /* GraphQL */ `
+  subscription OnUpdateNomination($owner: String) {
+    onUpdateNomination(owner: $owner) {
+      id
+      award {
+        id
+        title
+        description
+        categories
+        nominatedBy
+        createdAt
+        updatedAt
+      }
+      categories
+      nominee
+      nominatedBy
+      nominationFor
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteNomination = /* GraphQL */ `
+  subscription OnDeleteNomination($owner: String) {
+    onDeleteNomination(owner: $owner) {
+      id
+      award {
+        id
+        title
+        description
+        categories
+        nominatedBy
+        createdAt
+        updatedAt
+      }
+      categories
+      nominee
+      nominatedBy
+      nominationFor
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
