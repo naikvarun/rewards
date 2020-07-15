@@ -20,6 +20,7 @@ export const listNominations = /* GraphQL */ `
       nominationFor
       nominee
       createdAt
+      owner
       }
       nextToken
     }

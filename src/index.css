@@ -4,7 +4,9 @@
   --amplify-primary-tint: #DA291C;
   --amplify-primary-shade: #DA291C;
 }
-
+.body {
+  font-family: Roboto sans-serif;
+}
 .bg-white {
   background: #ffffff;
 }

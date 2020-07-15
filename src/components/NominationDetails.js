@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Row, Card, Badge, Accordion} from "react-bootstrap";
+
 import AwardIcon from "./AwardIcon";
 
 const NominationDetails = ({nomination}) => {
@@ -27,7 +28,7 @@ const NominationDetails = ({nomination}) => {
                                         <div className="mb-3">
                                             {nomination.nominationFor}
                                         </div>
-                                        <div><small className="text-muted"> Nominated: {new Date(nomination.createdAt).toLocaleDateString()}</small>
+                                        <div><span className="text-muted"> By {nomination.owner} at {new Date(nomination.createdAt).toLocaleDateString()}</span>
                                     </div>
                                     </Card.Text>
 
