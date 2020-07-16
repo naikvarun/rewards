@@ -9,7 +9,7 @@ const NominationDetails = ({nomination}) => {
         <React.Fragment>
             <Row className="justify-content-md-center mt-4 mb-4">
                 <Col>
-                    <Accordion defaultActiveKey={nomination.id}>
+                    <Accordion defaultActiveKey={0}>
                         <Card>
                             <Accordion.Toggle as={Card.Header} eventKey={nomination.id}>
                                 <div>
