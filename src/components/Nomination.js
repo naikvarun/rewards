@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import {Row, Col, Button, Modal, Form} from 'react-bootstrap'
+import {Button, Col, Form, Modal, Row} from 'react-bootstrap'
 import {AwardContext} from "../context/AwardsContextProvider";
 import TagsInput from "react-tagsinput";
 import './NominationForm.css'
@@ -33,7 +33,7 @@ const NominationForm = () => {
     }
 
     const renderNominationText = () => {
-        return `Hi ${ user.attributes.name}, Nominate Someone Today`;
+        return `Hi ${user.attributes.name}, Nominate Someone Today`;
     }
 
     const handleClose = () => setShow(false);
@@ -53,32 +53,35 @@ const NominationForm = () => {
                         <Modal.Title>Nomination</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form.Group>
-                            <Form.Label>Nominee</Form.Label>
-                            <TagsInput value={nomination.nominee}
-                                       onChange={(tags) => setNomination({...nomination, nominee: tags})}
-                                       inputProps={{placeholder: 'Nominee'}}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Award</Form.Label>
-                            <Form.Control as="select" value={nomination.award} name="nominationAwardId"
-                                          onChange={handleChange}>
-                                {awards.map(award => {
-                                    return (
-                                        <option key={award.id} value={award.id}>{award.title}</option>
-                                    )
-                                })}
-                            </Form.Control>
-                        </Form.Group>
+                        <Form.Row>
+                            <Form.Group as={Col}>
+                                <Form.Label>Nominee</Form.Label>
+                                <TagsInput value={nomination.nominee}
+                                           onChange={(tags) => setNomination({...nomination, nominee: tags})}
+                                           inputProps={{placeholder: 'Nominee'}}/>
+                            </Form.Group>
+                        </Form.Row>
+                        <Form.Row>
+                            <Form.Group as={Col}>
+                                <Form.Label>Award</Form.Label>
+                                <Form.Control as="select" value={nomination.award} name="nominationAwardId"
+                                              onChange={handleChange}>
+                                    {awards.map(award => {
+                                        return (
+                                            <option key={award.id} value={award.id}>{award.title}</option>
+                                        )
+                                    })}
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Label>Categories</Form.Label>
+                                <TagsInput value={nomination.categories}
+                                           onChange={(tags) => setNomination({...nomination, categories: tags})}
+                                           inputProps={{placeholder: 'Category'}}/>
+                            </Form.Group>
+                        </Form.Row>
 
-                        <Form.Group>
-                            <Form.Label>Categories</Form.Label>
-                            <TagsInput value={nomination.categories}
-                                       onChange={(tags) => setNomination({...nomination, categories: tags})}
-                                       inputProps={{placeholder: 'Category'}}/>
-                        </Form.Group>
-
-                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                        <Form.Group  controlId="exampleForm.ControlTextarea1">
                             <Form.Label>For</Form.Label>
                             <Form.Control name="nominationFor" as="textarea" rows="5" value={nomination.nominationFor}
                                           onChange={handleChange}/>
