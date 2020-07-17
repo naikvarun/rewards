@@ -17,7 +17,7 @@ const NominationDetails = ({nomination}) => {
                                     <h5 style={{display: 'inline'}} className="ml-2"> {nomination.nominee.join(', ')}</h5>
                                     <span className="ml-2">  {nomination.categories.map(category => {
                                         return (
-                                            <Badge key={`${nomination.id}-${category}`} variant="bw">{category}</Badge>
+                                            <Badge className="ml-1" key={`${nomination.id}-${category}`} variant="bw">{category}</Badge>
                                         )
                                     })}</span>
                                 </div>
