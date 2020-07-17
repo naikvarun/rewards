@@ -49,7 +49,6 @@ export const getNomination = /* GraphQL */ `
       }
       categories
       nominee
-      nominatedBy
       nominationFor
       createdAt
       updatedAt
@@ -68,7 +67,6 @@ export const listNominations = /* GraphQL */ `
         id
         categories
         nominee
-        nominatedBy
         nominationFor
         createdAt
         updatedAt

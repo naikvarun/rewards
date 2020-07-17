@@ -55,7 +55,6 @@ export const onCreateNomination = /* GraphQL */ `
       }
       categories
       nominee
-      nominatedBy
       nominationFor
       createdAt
       updatedAt
@@ -78,7 +77,6 @@ export const onUpdateNomination = /* GraphQL */ `
       }
       categories
       nominee
-      nominatedBy
       nominationFor
       createdAt
       updatedAt
@@ -101,7 +99,6 @@ export const onDeleteNomination = /* GraphQL */ `
       }
       categories
       nominee
-      nominatedBy
       nominationFor
       createdAt
       updatedAt

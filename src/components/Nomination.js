@@ -12,20 +12,13 @@ const NominationForm = () => {
     const {user} = useContext(UserContext);
     const {createNomination} = useContext(NominationContext)
     const [nomination, setNomination] = useState({
-        nominationAwardId: null,
+        nominationAwardId: '',
         nominee: ['Varun Naik'],
         nominationFor: '',
         categories: ['Innovation']
     })
 
-    const selectedRandomAwardIndex = Math.floor ( Math.random()* awards.length);
 
-    if(selectedRandomAwardIndex) {
-        setNomination({
-            ...nomination,
-            nominationAwardId: awards[selectedRandomAwardIndex].id
-        })
-    }
     const nominationDescriptionPlaceHolder = '[Employee Name] working at [client name] in [project] is nominated for an excellence award in collaboration. While working on [one or two lines about project] they supported/helped other team members by [what they did in a couple of lines] and their efforts were appreciated by [Bitwiser names who were benefited by their support]. Because of their help and support we were able to [mention the accomplishment either project or training or organizational value add]';
 
     const handleChange = (e) => {
@@ -74,7 +67,7 @@ const NominationForm = () => {
                             <Form.Group as={Col}>
                                 <Form.Label>Award</Form.Label>
                                 <Form.Control as="select" value={nomination.nominationAwardId} name="nominationAwardId"
-                                              onChange={handleChange}>
+                                              onChange={handleChange} required>
                                     {awards.map(award => {
                                         return (
                                             <option key={award.id} value={award.id}>{award.title}</option>
@@ -91,9 +84,9 @@ const NominationForm = () => {
                         </Form.Row>
 
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>For</Form.Label>
+                            <Form.Label>Contribution</Form.Label>
                             <Form.Control name="nominationFor" as="textarea" rows="5" value={nomination.nominationFor}
-                                          onChange={handleChange} placeholder={nominationDescriptionPlaceHolder}/>
+                                          onChange={handleChange} required placeholder={nominationDescriptionPlaceHolder}/>
                         </Form.Group>
 
                     </Modal.Body>
