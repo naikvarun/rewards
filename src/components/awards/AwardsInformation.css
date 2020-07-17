@@ -1,7 +1,7 @@
 .bg-award {
     background: rgb(255, 255, 255) url("award-bg.png") no-repeat right bottom;
    width: 400px;
-    /*height: 375px;*/
+    height: 375px;
     border-top: #da291c 5px solid;
     border-bottom: rgba(0,0,0, 0.06) 2px solid;
     box-shadow: 2px 10px 20px 0 rgba(0,0,0,.06);
@@ -14,6 +14,7 @@
 }
 .award-description {
     font-size: 125%;
+    height: 100px;
 }
 .award-detail {
     font-size: 85%;

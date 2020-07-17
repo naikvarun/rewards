@@ -16,7 +16,9 @@ const AwardInformation = ({award}) => {
                   </Row>
                   <Row className="mt-5">
                       <Col >
-                          <span className="award-description"> {award.description} </span>
+                          <div className="award-description">
+                            <span > {award.description} </span>
+                          </div>
                       </Col>
                   </Row>
                   <Row className="mt-5">

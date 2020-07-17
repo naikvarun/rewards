@@ -12,12 +12,21 @@ const NominationForm = () => {
     const {user} = useContext(UserContext);
     const {createNomination} = useContext(NominationContext)
     const [nomination, setNomination] = useState({
-        nominatedBy: 'test',
-        nominationAwardId: "39edbfa1-1fb2-4d0f-a06c-dfb8d37b1a0b",
+        nominationAwardId: null,
         nominee: ['Varun Naik'],
-        nominationFor: 'Some description',
-        categories: ['Personal']
+        nominationFor: '',
+        categories: ['Innovation']
     })
+
+    const selectedRandomAwardIndex = Math.floor ( Math.random()* awards.length);
+
+    if(selectedRandomAwardIndex) {
+        setNomination({
+            ...nomination,
+            nominationAwardId: awards[selectedRandomAwardIndex].id
+        })
+    }
+    const nominationDescriptionPlaceHolder = '[Employee Name] working at [client name] in [project] is nominated for an excellence award in collaboration. While working on [one or two lines about project] they supported/helped other team members by [what they did in a couple of lines] and their efforts were appreciated by [Bitwiser names who were benefited by their support]. Because of their help and support we were able to [mention the accomplishment either project or training or organizational value add]';
 
     const handleChange = (e) => {
         const key = e.target.name;
@@ -33,7 +42,7 @@ const NominationForm = () => {
     }
 
     const renderNominationText = () => {
-        return `Hi ${user.attributes.name}, Nominate Someone Today`;
+        return `Hi ${user.attributes.name}, Recognize someone today`;
     }
 
     const handleClose = () => setShow(false);
@@ -64,7 +73,7 @@ const NominationForm = () => {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Award</Form.Label>
-                                <Form.Control as="select" value={nomination.award} name="nominationAwardId"
+                                <Form.Control as="select" value={nomination.nominationAwardId} name="nominationAwardId"
                                               onChange={handleChange}>
                                     {awards.map(award => {
                                         return (
@@ -81,10 +90,10 @@ const NominationForm = () => {
                             </Form.Group>
                         </Form.Row>
 
-                        <Form.Group  controlId="exampleForm.ControlTextarea1">
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>For</Form.Label>
                             <Form.Control name="nominationFor" as="textarea" rows="5" value={nomination.nominationFor}
-                                          onChange={handleChange}/>
+                                          onChange={handleChange} placeholder={nominationDescriptionPlaceHolder}/>
                         </Form.Group>
 
                     </Modal.Body>
