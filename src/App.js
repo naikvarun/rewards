@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useContext} from 'react';
 import './App.css';
+import {Amplify} from "aws-amplify";
+import awsConfig from './aws-exports';
+import {UserContext} from "./context/UserContext";
+import {AuthState} from "@aws-amplify/ui-components";
+import AuthPage from "./components/auth/AuthPage";
+import HomePage from "./components/HomePage";
+import AwardContextProvider from "./context/AwardsContextProvider";
+import Header from "./components/Header";
+import NominationContextProvider from "./context/NominationContextProvider";
+
+Amplify.configure(awsConfig);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const {authState, user} = useContext(UserContext);
+
+    return authState === AuthState.SignedIn && user ? (
+        <AwardContextProvider>
+            <NominationContextProvider>
+                <Header/>
+                <HomePage/>
+            </NominationContextProvider>
+        </AwardContextProvider>
+    ) : (
+        <AuthPage/>
+    )
 }
 
 export default App;

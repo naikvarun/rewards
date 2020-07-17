@@ -1,0 +1,22 @@
+type Award @model @auth(rules: [{ allow: private, provider: userPools }]) {
+    id: ID!
+    title: String!
+    description: String!
+    categories: [String]!
+    nominatedBy: [String]!
+}
+
+
+type Nomination @model @auth(
+    rules: [
+        { allow: owner }
+        { allow: groups, groups: ["voters", "hr"], operations: [read] }
+    ]
+) {
+    id: ID!
+    award: Award! @connection
+    categories: [String!]!
+    nominee: [String!]!
+    nominatedBy: String!
+    nominationFor: String!
+}
