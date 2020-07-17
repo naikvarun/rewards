@@ -17,6 +17,5 @@ type Nomination @model @auth(
     award: Award! @connection
     categories: [String!]!
     nominee: [String!]!
-    nominatedBy: String!
     nominationFor: String!
 }

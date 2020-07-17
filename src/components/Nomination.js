@@ -12,7 +12,7 @@ const NominationForm = () => {
     const {user} = useContext(UserContext);
     const {createNomination} = useContext(NominationContext)
     const [nomination, setNomination] = useState({
-        nominationAwardId: null,
+        nominationAwardId: '',
         nominee: ['Varun Naik'],
         nominationFor: '',
         categories: ['Innovation']
