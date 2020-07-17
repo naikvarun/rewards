@@ -11,6 +11,25 @@ const NominationList = () => {
     const {nominations} = useContext(NominationContext);
     const {awards} = useContext(AwardContext);
 
+    const renderNominations = () => {
+        return (
+            nominations && nominations.length ? (
+                (
+                    nominations.map(nomination => {
+                        return (
+                            <NominationDetails nomination={nomination} key={nomination.id} />
+                        )
+                    })
+                )
+                ) :
+                (
+                    <div className="text-center">
+                    <h3>You have no nominations, recognize someone today!!!</h3>
+                    </div>
+                )
+        )
+    }
+
     return (
         <React.Fragment>
         <div className="mt-5 mb-4 container-fluid">
@@ -27,11 +46,7 @@ const NominationList = () => {
             </Row>
             <Row className="mt-4">
                 <Col md={{ span: 8, offset: 2 }}>
-                    {nominations.map(nomination => {
-                        return (
-                            <NominationDetails nomination={nomination} key={nomination.id} />
-                        )
-                    })}
+                    { renderNominations()}
                 </Col>
             </Row>
 
