@@ -21,7 +21,7 @@ const AwardInformation = ({award}) => {
                           </div>
                       </Col>
                   </Row>
-                  <Row className="mt-5">
+                  <Row className="mt-3">
                       <Col >
                           <span className="award-detail">Nominated for  {award.categories.join(', ')} </span>
                       </Col>
