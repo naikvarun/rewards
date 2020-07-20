@@ -66,11 +66,12 @@ export const createNomination = /* GraphQL */ `
         updatedAt
       }
       categories
+      nominationBy
       nominee
       nominationFor
+      votes
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -91,11 +92,12 @@ export const updateNomination = /* GraphQL */ `
         updatedAt
       }
       categories
+      nominationBy
       nominee
       nominationFor
+      votes
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -116,11 +118,12 @@ export const deleteNomination = /* GraphQL */ `
         updatedAt
       }
       categories
+      nominationBy
       nominee
       nominationFor
+      votes
       createdAt
       updatedAt
-      owner
     }
   }
 `;
