@@ -12,12 +12,14 @@ const NominationContextProvider = (props) => {
             .then(value => {
                 const isVoter = !!value.getIdToken().payload['cognito:groups'];
                 setNominations(items.map(item => {
-                    return {
-                        ...item,
-                        votes: item.votes ? item.votes : (isVoter ? [] : null)
+                    if (item) {
+                        return {
+                            ...item,
+                            votes: item.votes ? item.votes : (isVoter ? [] : null)
+                        }
                     }
                 }));
-            } );
+            });
 
     }
 
@@ -27,7 +29,6 @@ const NominationContextProvider = (props) => {
         ) => {
             refreshNominations(listNominations.items);
         }).catch(err => {
-
             if (err.data) {
                 const listNominations = err.data.listNominations;
                 refreshNominations(listNominations.items);
