@@ -8,7 +8,9 @@ const NominationDetails = ({nomination}) => {
 
     const renderVote = () => {
         return nomination.votes ? (
-            <Vote nomination={nomination} />
+            <div className="mt-3">
+                <Vote nomination={nomination}/>
+            </div>
         ) : null;
     }
     return (
@@ -39,9 +41,7 @@ const NominationDetails = ({nomination}) => {
                                         <div className="mt-3"><span
                                             className="text-muted"> By {nomination.nominationBy} at {new Date(nomination.createdAt).toLocaleDateString()}</span>
                                         </div>
-                                        <div className="mt-3">
-                                            {renderVote()}
-                                        </div>
+                                        {renderVote()}
                                     </Card.Text>
 
                                 </Card.Body>

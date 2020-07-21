@@ -11,13 +11,14 @@ const NominationForm = () => {
     const {awards} = useContext(AwardContext);
     const {user} = useContext(UserContext);
     const {createNomination} = useContext(NominationContext)
-    const [nomination, setNomination] = useState({
+    const initialFormState = {
         nominationAwardId: '',
         nominee: ['Varun Naik'],
         nominationFor: '',
         categories: ['Innovation'],
         nominationBy: user.username
-    })
+    }
+    const [nomination, setNomination] = useState(initialFormState);
 
 
     const nominationDescriptionPlaceHolder = '[Employee Name] working at [client name] in [project] is nominated for an excellence award in collaboration. While working on [one or two lines about project] they supported/helped other team members by [what they did in a couple of lines] and their efforts were appreciated by [Bitwiser names who were benefited by their support]. Because of their help and support we were able to [mention the accomplishment either project or training or organizational value add]';
@@ -33,6 +34,7 @@ const NominationForm = () => {
         console.log(nomination);
         createNomination(nomination);
         setShow(false);
+        setNomination(initialFormState);
     }
 
     const renderNominationText = () => {
