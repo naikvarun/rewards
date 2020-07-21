@@ -6,7 +6,7 @@ export const UserContext = createContext([]);
 const UserContextProvider = (props) => {
     const [user, setUser] = useState(null);
     const [authState, setAuthState] = useState(null);
-
+    const [username, setUsername] =  useState(null);
     const handleSignOut = async () => {
         console.log('user Signed out');
         await Auth.signOut();
@@ -16,10 +16,15 @@ const UserContextProvider = (props) => {
         return onAuthUIStateChange((nextAuthState, authData) => {
             setAuthState(nextAuthState);
             setUser(authData);
+            let userName = null;
+            if(authData) {
+                userName = authData.username;
+            }
+            setUsername(userName);
         });
     }, []);
     return (
-        <UserContext.Provider value={{ authState, user,  handleSignOut }}>
+        <UserContext.Provider value={{ authState, user, username,  handleSignOut }}>
             {props.children}
         </UserContext.Provider>
     );

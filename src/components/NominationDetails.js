@@ -2,9 +2,15 @@ import React from 'react';
 import {Col, Row, Card, Badge, Accordion} from "react-bootstrap";
 
 import AwardIcon from "./AwardIcon";
+import Vote from "./Voting";
 
 const NominationDetails = ({nomination}) => {
 
+    const renderVote = () => {
+        return nomination.votes ? (
+            <Vote nomination={nomination} />
+        ) : null;
+    }
     return (
         <React.Fragment>
             <Row className="justify-content-md-center mt-4 mb-4">
@@ -13,11 +19,13 @@ const NominationDetails = ({nomination}) => {
                         <Card>
                             <Accordion.Toggle as={Card.Header} eventKey={nomination.id}>
                                 <div>
-                                    <AwardIcon award={nomination.award.title} />
-                                    <h5 style={{display: 'inline'}} className="ml-2"> {nomination.nominee.join(', ')}</h5>
+                                    <AwardIcon award={nomination.award.title}/>
+                                    <h5 style={{display: 'inline'}}
+                                        className="ml-2"> {nomination.nominee.join(', ')}</h5>
                                     <span className="ml-2">  {nomination.categories.map(category => {
                                         return (
-                                            <Badge className="ml-1" key={`${nomination.id}-${category}`} variant="bw">{category}</Badge>
+                                            <Badge className="ml-1" key={`${nomination.id}-${category}`}
+                                                   variant="bw">{category}</Badge>
                                         )
                                     })}</span>
                                 </div>
@@ -25,11 +33,15 @@ const NominationDetails = ({nomination}) => {
                             <Accordion.Collapse eventKey={nomination.id}>
                                 <Card.Body>
                                     <Card.Text as="div">
-                                        <div className="mb-3">
+                                        <div className="">
                                             {nomination.nominationFor}
                                         </div>
-                                        <div><span className="text-muted"> By {nomination.owner} at {new Date(nomination.createdAt).toLocaleDateString()}</span>
-                                    </div>
+                                        <div className="mt-3"><span
+                                            className="text-muted"> By {nomination.nominationBy} at {new Date(nomination.createdAt).toLocaleDateString()}</span>
+                                        </div>
+                                        <div className="mt-3">
+                                            {renderVote()}
+                                        </div>
                                     </Card.Text>
 
                                 </Card.Body>

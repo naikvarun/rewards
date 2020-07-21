@@ -15,7 +15,8 @@ const NominationForm = () => {
         nominationAwardId: '',
         nominee: ['Varun Naik'],
         nominationFor: '',
-        categories: ['Innovation']
+        categories: ['Innovation'],
+        nominationBy: user.username
     })
 
 

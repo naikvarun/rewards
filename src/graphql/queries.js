@@ -48,11 +48,12 @@ export const getNomination = /* GraphQL */ `
         updatedAt
       }
       categories
+      nominationBy
       nominee
       nominationFor
+      votes
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -66,11 +67,12 @@ export const listNominations = /* GraphQL */ `
       items {
         id
         categories
+        nominationBy
         nominee
         nominationFor
+        votes
         createdAt
         updatedAt
-        owner
       }
       nextToken
     }

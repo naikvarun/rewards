@@ -1,8 +1,8 @@
 import {API, graphqlOperation} from "aws-amplify";
 import * as mutations from '../graphql/mutations';
 
-
-export const listNominations = /* GraphQL */ `
+const createListNominationMutation = (isVoter) => {
+    return /* GraphQL */ `
   query ListNominations(
     $filter: ModelNominationFilterInput
     $limit: Int
@@ -19,22 +19,28 @@ export const listNominations = /* GraphQL */ `
       nominationFor
       nominee
       createdAt
-      owner
+      nominationBy 
+      ${isVoter ? 'votes' : ''} 
       }
       nextToken
     }
   }
-`;
+`
+}
+export const listNominations = '';
 
 export const nominate = async (nomination) => {
     try {
         await API.graphql(graphqlOperation(mutations.createNomination, {input: nomination}));
-        console.log(nomination);
     } catch (e) {
         console.log(e);
     }
 }
 
 export const getNominations  =  () =>  {
-    return API.graphql(graphqlOperation(listNominations));
+    return API.graphql(graphqlOperation(createListNominationMutation(true)));
+}
+
+export const voteNomination = async  (nominationId, votes) => {
+    await API.graphql(graphqlOperation(mutations.updateNomination, {input: {id: nominationId, votes: votes}}));
 }

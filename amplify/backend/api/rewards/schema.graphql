@@ -6,16 +6,18 @@ type Award @model @auth(rules: [{ allow: private, provider: userPools }]) {
     nominatedBy: [String]!
 }
 
-
-type Nomination @model @auth(
+type Nomination @model(subscriptions: null) @auth(
     rules: [
-        { allow: owner }
-        { allow: groups, groups: ["voters", "hr"], operations: [read] }
+        { allow: owner , ownerField: "nominationBy"}
+        { allow: groups, groups: ["voters", "hr"] }
     ]
 ) {
     id: ID!
     award: Award! @connection
     categories: [String!]!
+    nominationBy: String!
     nominee: [String!]!
     nominationFor: String!
+    votes: [String] @auth(rules: [ { allow: groups, groups: ["voters", "hr"] }, { allow: owner , ownerField: "nominationBy", operations:[create]}])
 }
+
